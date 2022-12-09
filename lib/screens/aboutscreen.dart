@@ -39,9 +39,6 @@ class AboutScreen extends StatelessWidget {
           height: 16,
         ),
         _buildEducationSection(),
-        SizedBox(
-          height: 16,
-        ),
       ],
     );
   }
@@ -55,15 +52,14 @@ class AboutScreen extends StatelessWidget {
           text: TextSpan(
             text: "I'm Sumit Tiware and I'm a ",
             style: TextStyle(
-              fontSize: 18,
-              color: DarkColors.text,
-            ),
+                fontSize: 18, color: DarkColors.text, fontFamily: "Montserrat"),
             children: <TextSpan>[
               TextSpan(
                 text: "Flutter & Android Developer",
                 style: TextStyle(
                   fontSize: 18,
                   color: StyleColors.pink,
+                  fontFamily: "Montserrat",
                 ),
               )
             ],
@@ -107,7 +103,7 @@ class AboutScreen extends StatelessWidget {
   Widget _buildSkillsAndTools() {
     return ResponsiveWidget(
       smallScreen: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildSection(
             title: "My Skills",
@@ -212,6 +208,7 @@ class AboutScreen extends StatelessWidget {
           height: 10,
         ),
         Timeline.tileBuilder(
+          physics: NeverScrollableScrollPhysics(),
           theme: TimelineThemeData(
             nodePosition: 0,
             color: StyleColors.pink,
@@ -243,6 +240,7 @@ class AboutScreen extends StatelessWidget {
           height: 10,
         ),
         Timeline.tileBuilder(
+          physics: NeverScrollableScrollPhysics(),
           theme: TimelineThemeData(
             nodePosition: 0,
             color: StyleColors.pink,

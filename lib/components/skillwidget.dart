@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web_app/models/skills&tools.dart';
 import 'package:web_app/utils/colors.dart';
+import 'package:web_app/utils/images_utils.dart';
 
 class SkillWidget extends StatelessWidget {
   final Skill skill;
@@ -14,7 +15,9 @@ class SkillWidget extends StatelessWidget {
           Container(
             height: 60,
             width: 60,
-            child: Image.asset('icons/${skill.image}.png'),
+            child: Image.asset(
+              ImagesUtils.getActualPath('icons/${skill.image}.png'),
+            ),
           ),
           SizedBox(
             height: 8,
@@ -44,7 +47,9 @@ class ToolWidget extends StatelessWidget {
           Container(
             height: 60,
             width: 60,
-            child: Image.asset('icons/${tool.image}.png'),
+            child: Image.asset(
+              ImagesUtils.getActualPath('icons/${tool.image}.png'),
+            ),
           ),
           SizedBox(
             height: 8,

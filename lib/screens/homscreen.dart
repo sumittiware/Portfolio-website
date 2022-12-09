@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:web_app/data/profile.dart';
 import 'package:web_app/utils/colors.dart';
 import 'package:web_app/responsive.dart';
+import 'package:web_app/utils/images_utils.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -26,7 +27,9 @@ class _HomeState extends State<Home> {
             ),
             CircleAvatar(
               radius: 150,
-              backgroundImage: AssetImage("profile/profile.jpeg"),
+              backgroundImage: AssetImage(
+                ImagesUtils.getActualPath('profile/profile.jpeg'),
+              ),
             ),
             SizedBox(
               width: deviceSize.width * 0.05,
@@ -34,24 +37,29 @@ class _HomeState extends State<Home> {
             _detail()
           ],
         ),
-        smallScreen: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              radius: 150,
-              backgroundImage: AssetImage("profile/profile.jpeg"),
-            ),
-            SizedBox(
-              height: deviceSize.width * 0.05,
-            ),
-            _detail()
-          ],
+        smallScreen: Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 150,
+                backgroundImage: AssetImage(
+                  ImagesUtils.getActualPath('profile/profile.jpeg'),
+                ),
+              ),
+              SizedBox(
+                height: deviceSize.width * 0.05,
+              ),
+              _detail()
+            ],
+          ),
         ),
       ),
     );
   }
 
-  _detail() {
+  Widget _detail() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: (ResponsiveWidget.isLargeScreen(context))
@@ -61,39 +69,20 @@ class _HomeState extends State<Home> {
         Text(
           'I\'m Sumit Tiware',
           style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
+            fontSize: 20,
             color: DarkColors.heading,
           ),
         ),
         SizedBox(
           height: 10,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'I\'m a ',
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: DarkColors.heading,
-              ),
-            ),
-            Container(
-              child: AnimatedTextKit(
-                animatedTexts: [
-                  _writer("Flutter Developer"),
-                  _writer("Android Developer"),
-                  _writer("Programmer"),
-                  _writer("Freelancer"),
-                ],
-                repeatForever: true,
-                pause: const Duration(milliseconds: 1000),
-                displayFullTextOnTap: true,
-              ),
-            )
-          ],
+        Text(
+          'I\'m Flutter & Android Developer',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: DarkColors.heading,
+          ),
         ),
         SizedBox(
           height: 40,
@@ -108,93 +97,54 @@ class _HomeState extends State<Home> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        CircleAvatar(
-          backgroundColor: StyleColors.pink,
-          child: IconButton(
-            icon: Icon(
-              FontAwesomeIcons.twitter,
-              color: DarkColors.heading,
-            ),
-            onPressed: () {
-              launchUrl(
-                Uri.parse(
-                  profile['twitter'],
-                ),
-              );
-            },
-          ),
+        _buildSocialButton(
+          FontAwesomeIcons.twitter,
+          profile['twitter'],
         ),
         SizedBox(
           width: 8,
         ),
-        CircleAvatar(
-          backgroundColor: StyleColors.pink,
-          child: IconButton(
-            icon: Icon(
-              FontAwesomeIcons.github,
-              color: DarkColors.heading,
-            ),
-            onPressed: () {
-              launchUrl(
-                Uri.parse(
-                  profile['github'],
-                ),
-              );
-            },
-          ),
+        _buildSocialButton(
+          FontAwesomeIcons.github,
+          profile['github'],
         ),
         SizedBox(
           width: 8,
         ),
-        CircleAvatar(
-          backgroundColor: StyleColors.pink,
-          child: IconButton(
-            icon: Icon(
-              FontAwesomeIcons.instagram,
-              color: DarkColors.heading,
-            ),
-            onPressed: () {
-              launchUrl(
-                Uri.parse(
-                  profile['instagram'],
-                ),
-              );
-            },
-          ),
+        _buildSocialButton(
+          FontAwesomeIcons.instagram,
+          profile['instagram'],
         ),
         SizedBox(
           width: 8,
         ),
-        CircleAvatar(
-          backgroundColor: StyleColors.pink,
-          child: IconButton(
-            icon: Icon(
-              FontAwesomeIcons.linkedinIn,
-              color: DarkColors.heading,
-            ),
-            onPressed: () {
-              launchUrl(
-                Uri.parse(
-                  profile['linkedin'],
-                ),
-              );
-            },
-          ),
+        _buildSocialButton(
+          FontAwesomeIcons.linkedinIn,
+          profile['linkedin'],
         )
       ],
     );
   }
 
-  TypewriterAnimatedText _writer(String title) {
-    return TypewriterAnimatedText(
-      '$title !',
-      textStyle: TextStyle(
-        fontSize: 30.0,
-        fontWeight: FontWeight.bold,
-        color: StyleColors.pink,
-      ),
-      speed: const Duration(
-        milliseconds: 100,
+  _buildSocialButton(
+    IconData icon,
+    String url,
+  ) {
+    return CircleAvatar(
+      backgroundColor: StyleColors.pink,
+      child: IconButton(
+        hoverColor: StyleColors.pink.withOpacity(0.2),
+        icon: Icon(
+          icon,
+          color: DarkColors.heading,
+        ),
+        onPressed: () {
+          launchUrl(
+            Uri.parse(
+              url,
+            ),
+          );
+        },
       ),
     );
   }

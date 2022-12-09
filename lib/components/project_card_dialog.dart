@@ -45,19 +45,6 @@ void showProjectCard(
                 SizedBox(
                   height: 16,
                 ),
-                Container(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    image: DecorationImage(
-                      image: AssetImage(
-                        project.asset,
-                      ),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
                 SizedBox(
                   height: 8,
                 ),

@@ -8,7 +8,8 @@ class EducationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      width: double.infinity,
       padding: const EdgeInsets.all(12.0),
       child: Row(
         children: [
@@ -23,35 +24,37 @@ class EducationCard extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              Row(children: [
-                Text(
-                  education.degree,
-                  style: TextStyle(
-                    color: DarkColors.text,
-                    fontSize: 16,
+              Row(
+                children: [
+                  Text(
+                    education.degree,
+                    style: TextStyle(
+                      color: DarkColors.text,
+                      fontSize: 16,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 30,
-                ),
-                Text(
-                  education.year,
-                  style: TextStyle(
-                    color: DarkColors.text,
-                    fontSize: 16,
+                  SizedBox(
+                    width: 30,
                   ),
-                ),
-                SizedBox(
-                  width: 30,
-                ),
-                Text(
-                  education.grade,
-                  style: TextStyle(
-                    color: DarkColors.text,
-                    fontSize: 16,
+                  Text(
+                    education.year,
+                    style: TextStyle(
+                      color: DarkColors.text,
+                      fontSize: 16,
+                    ),
                   ),
-                ),
-              ])
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    education.grade,
+                    style: TextStyle(
+                      color: DarkColors.text,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ],

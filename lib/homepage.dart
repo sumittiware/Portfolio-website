@@ -21,7 +21,9 @@ class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   bool _openDrawer = false;
   final _divider = Container(
-    padding: EdgeInsets.all(30),
+    margin: EdgeInsets.symmetric(
+      vertical: 42,
+    ),
     height: 1,
     width: double.infinity,
     color: DarkColors.heading,
@@ -32,8 +34,10 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-    _animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 450));
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 450),
+    );
   }
 
   @override
@@ -65,9 +69,11 @@ class _HomePageState extends State<HomePage>
       title: Text(
         "<Sumit Tiware/>",
         style: TextStyle(
-            color: DarkColors.heading,
-            fontWeight: FontWeight.bold,
-            fontSize: 30),
+          color: DarkColors.heading,
+          fontWeight: FontWeight.bold,
+          fontSize: 30,
+          fontFamily: "LaBelleAurore",
+        ),
       ),
       actions: (ResponsiveWidget.isLargeScreen(context))
           ? [
@@ -103,7 +109,13 @@ class _HomePageState extends State<HomePage>
             controller: _controller,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 60),
+                padding: (ResponsiveWidget.isSmallScreen(context))
+                    ? const EdgeInsets.symmetric(
+                        horizontal: 16,
+                      )
+                    : const EdgeInsets.symmetric(
+                        horizontal: 60,
+                      ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -232,9 +244,10 @@ class _HomePageState extends State<HomePage>
     Pages pagename,
   ) {
     return AutoScrollTag(
-        key: ValueKey(index),
-        controller: _controller,
-        index: index,
-        child: target);
+      key: ValueKey(index),
+      controller: _controller,
+      index: index,
+      child: target,
+    );
   }
 }

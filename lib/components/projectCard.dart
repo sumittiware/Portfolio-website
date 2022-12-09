@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web_app/components/project_card_dialog.dart';
 import 'package:web_app/models/project.dart';
+import 'package:web_app/utils/images_utils.dart';
 
 import '../utils/colors.dart';
 
@@ -14,8 +15,9 @@ class ProjectCard extends StatelessWidget {
         context,
         project,
       ),
-      child: SizedBox(
+      child: Container(
         width: 300,
+        padding: EdgeInsets.all(8),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +42,9 @@ class ProjectCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   child: Image(
                     image: AssetImage(
-                      project.asset,
+                      ImagesUtils.getActualPath(
+                        project.asset,
+                      ),
                     ),
                     fit: BoxFit.cover,
                   ),

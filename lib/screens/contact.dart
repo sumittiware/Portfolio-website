@@ -77,51 +77,60 @@ class _ContactPageState extends State<ContactPage> {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        HeaderWidget.h1(
-          title: 'Contact Me',
-        ),
-        SizedBox(
-          height: 30,
-        ),
-        ResponsiveWidget(
-          largeScreen: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SvgPicture.asset(
-                "svg/contactme.svg",
-                width: 300,
-              ),
-              _form(deviceSize)
-            ],
+    return SizedBox(
+      width: deviceSize.width,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          HeaderWidget.h1(
+            title: 'Contact Me',
           ),
-          smallScreen: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SvgPicture.asset(
-                "svg/contactme.svg",
-                width: 300,
-              ),
-              _form(deviceSize)
-            ],
+          SizedBox(
+            height: 30,
           ),
-        )
-      ],
+          ResponsiveWidget(
+            largeScreen: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  "svg/contactme.svg",
+                  width: 300,
+                ),
+                _form(deviceSize)
+              ],
+            ),
+            smallScreen: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    "svg/contactme.svg",
+                    width: 300,
+                  ),
+                  _form(deviceSize)
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 
   _form(Size deviceSize) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 15),
-      width: 400,
+      padding: ResponsiveWidget.isSmallScreen(context)
+          ? EdgeInsets.symmetric(
+              vertical: 16,
+              horizontal: 24,
+            )
+          : EdgeInsets.symmetric(vertical: 16),
+      width: ResponsiveWidget.isSmallScreen(context) ? double.infinity : 400,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           TextField(
             controller: _nameController,
@@ -187,7 +196,7 @@ class _ContactPageState extends State<ContactPage> {
           ),
           SizedBox(height: 30),
           SizedBox(
-            width: deviceSize.width * 0.2,
+            width: double.infinity,
             height: 50,
             child: ElevatedButton(
               onPressed: () {

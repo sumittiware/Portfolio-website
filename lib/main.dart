@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Sumit Tiware',
       darkTheme: ThemeData(
         primaryColor: StyleColors.pink,
-        fontFamily: "Poppins",
+        fontFamily: "Montserrat",
       ),
       home: HomePage(),
     );
