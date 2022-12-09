@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:web_app/data/profile.dart';
-import 'package:web_app/models/project.dart';
-import 'package:web_app/models/publications.dart';
 import 'package:web_app/components/articleCard.dart';
 import 'package:web_app/base_components/heading.dart';
 import 'package:web_app/components/projectCard.dart';
-import 'package:web_app/responsive.dart';
 
 class PublicationScreen extends StatefulWidget {
   @override

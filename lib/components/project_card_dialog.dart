@@ -3,7 +3,6 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:web_app/models/project.dart';
 import 'package:web_app/utils/colors.dart';
 import 'package:web_app/base_components/heading.dart';
-import 'package:web_app/models/publications.dart';
 
 void showProjectCard(
   BuildContext context,
