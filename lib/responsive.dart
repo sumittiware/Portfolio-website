@@ -12,7 +12,7 @@ class ResponsiveWidget extends StatelessWidget {
   });
 
   static bool isSmallScreen(BuildContext context) {
-    return MediaQuery.of(context).size.width < 800;
+    return MediaQuery.of(context).size.width < 700;
   }
 
   static bool isLargeScreen(BuildContext context) {

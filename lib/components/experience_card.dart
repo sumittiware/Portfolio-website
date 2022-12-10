@@ -13,6 +13,7 @@ class ExperienceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final isSmallScreen = ResponsiveWidget.isSmallScreen(context);
     return Container(
+      width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.only(bottom: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -20,32 +21,35 @@ class ExperienceCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  Text(
-                    experience.role,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+              FittedBox(
+                fit: BoxFit.fitWidth,
+                child: Row(
+                  children: [
+                    Text(
+                      experience.role,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  Text(
-                    "  |  ",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
+                    Text(
+                      "  |  ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
                     ),
-                  ),
-                  Text(
-                    experience.company,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
-                ],
+                    Text(
+                      experience.company,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
               ),
               if (!isSmallScreen)
                 Text(

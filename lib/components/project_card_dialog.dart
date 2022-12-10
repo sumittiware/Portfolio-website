@@ -30,8 +30,10 @@ void showProjectCard(
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    HeaderWidget.h2(
-                      title: project.title,
+                    Expanded(
+                      child: HeaderWidget.h2(
+                        title: project.title,
+                      ),
                     ),
                     IconButton(
                       padding: EdgeInsets.zero,

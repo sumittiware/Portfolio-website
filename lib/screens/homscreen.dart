@@ -75,12 +75,15 @@ class _HomeState extends State<Home> {
         SizedBox(
           height: 10,
         ),
-        Text(
-          'I\'m Flutter & Android Developer',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: DarkColors.heading,
+        FittedBox(
+          fit: BoxFit.fitWidth,
+          child: Text(
+            'I\'m Flutter & Android Developer',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: DarkColors.heading,
+            ),
           ),
         ),
         SizedBox(

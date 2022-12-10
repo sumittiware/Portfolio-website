@@ -111,7 +111,7 @@ class AboutScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 8,
+            height: 16,
           ),
           _buildSection(
             title: "Tools",
@@ -140,7 +140,7 @@ class AboutScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 8,
+            width: 16,
           ),
           Expanded(
             child: _buildSection(
@@ -163,7 +163,7 @@ class AboutScreen extends StatelessWidget {
     List<Widget> widgets,
   }) {
     return Container(
-      padding: EdgeInsets.all(8),
+      padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: DarkColors.heading.withOpacity(0.4),
         gradient: LinearGradient(

@@ -8,20 +8,24 @@ class EducationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceSize = MediaQuery.of(context).size;
     return Container(
-      width: double.infinity,
+      width: deviceSize.width,
       padding: const EdgeInsets.all(12.0),
       child: Row(
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                education.institute,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: DarkColors.heading,
-                  fontSize: 20,
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  education.institute,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: DarkColors.heading,
+                    fontSize: 20,
+                  ),
                 ),
               ),
               Row(

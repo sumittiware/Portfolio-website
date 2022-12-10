@@ -40,6 +40,15 @@ class _HomePageState extends State<HomePage>
     );
   }
 
+  void closeDrawer() {
+    setState(() {
+      _openDrawer = !_openDrawer;
+      (_openDrawer)
+          ? _animationController.forward()
+          : _animationController.reverse();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,7 +123,7 @@ class _HomePageState extends State<HomePage>
                         horizontal: 16,
                       )
                     : const EdgeInsets.symmetric(
-                        horizontal: 60,
+                        horizontal: 64,
                       ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -227,15 +236,6 @@ class _HomePageState extends State<HomePage>
         ),
       ),
     );
-  }
-
-  void closeDrawer() {
-    setState(() {
-      _openDrawer = !_openDrawer;
-      (_openDrawer)
-          ? _animationController.forward()
-          : _animationController.reverse();
-    });
   }
 
   Widget _buildScrollItem(
